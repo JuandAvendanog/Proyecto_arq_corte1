@@ -1,0 +1,14 @@
+
+spring:
+  application:
+    name: proyecto-arquitectura-corte1
+
+datasource:
+  my-connection:
+    jdbc-url: jdbc:postgresql://localhost:5432/project_system
+    username: walrus
+    password: 12345
+    maximum-pool-size: 10
+    pool-name: "crud-pool"
+    auto-commit: true
+

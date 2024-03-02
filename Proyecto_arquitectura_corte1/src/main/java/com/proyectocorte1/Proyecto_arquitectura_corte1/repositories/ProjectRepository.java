@@ -27,6 +27,7 @@ public class ProjectRepository {
     private final JdbcTemplate template;
     private final String table = "proyecto";
 
+
     public ProjectRepository(NamedParameterJdbcTemplate namedParameterJdbcTemplate,
                              DataSource dataSource, JdbcTemplate template) {
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
@@ -39,21 +40,21 @@ public class ProjectRepository {
         return namedParameterJdbcTemplate.query(sql,mapper);
     }
 
-    public String createProject(Project newProject, int id) {
+    public String createProject(Project newProject, int id_user) {
 
-        if (id != 1){
+        if (typeUser(id_user) != 1){
             return "No tienes permiso";
         }
         insert.execute( new MapSqlParameterSource()
                 .addValue("nombre", newProject.name)
                 .addValue("descripcion", newProject.description)
                 .addValue("fechainicio", newProject.startDate)
-                .addValue("gerente_id", id));
+                .addValue("gerente_id", id_user));
         return "Proyecto creado";
     }
 
     public String updateProject(int id_user, int id_project, Project updateProject) {
-        if(id_user != 1){
+        if(typeUser(id_user) != 1){
             return "No tienes permiso para actualizar proyectos";
         }
 
@@ -76,12 +77,18 @@ public class ProjectRepository {
     }
 
     public String deleteProject(int id_user, int id_project) {
-        if(id_user != 1){
+
+        if( typeUser(id_user) != 1 ){
             return "No tienes permiso para eliminar proyectos";
         }
         String sql = "delete from " + table + " where id = ?";
         template.update(sql,id_project);
         return "Proyecto eliminado";
+    }
+
+    public int typeUser(int id){
+        String sql = "select tipo_usuario_id from usuario where id = ?";
+        return template.queryForObject(sql,Integer.class,id);
     }
 
 

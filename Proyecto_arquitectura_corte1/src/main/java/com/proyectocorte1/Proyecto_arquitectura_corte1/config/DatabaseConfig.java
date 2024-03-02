@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import javax.sql.DataSource;
+import java.sql.PreparedStatement;
 
 
 @Configuration
@@ -28,4 +29,5 @@ public class DatabaseConfig {
     public NamedParameterJdbcTemplate crudNamedParameterJdbcTemplate(JdbcTemplate crudJdbcTemplate){
         return new NamedParameterJdbcTemplate(crudJdbcTemplate);
     }
+
 }

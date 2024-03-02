@@ -10,14 +10,16 @@ public class UserStory {
 
     public int idUserStory;
 
+    public int idStatus;
+
     public int idProject;
 
-    public UserStory(int id, String details, String criteria, int idUserStory, int idProject) {
+    public UserStory(int id, String details, String criteria, int idUserStory, int idStatus, int idProject) {
         this.id = id;
         this.details = details;
         this.criteria = criteria;
         this.idUserStory = idUserStory;
+        this.idStatus = idStatus;
         this.idProject = idProject;
     }
-
 }

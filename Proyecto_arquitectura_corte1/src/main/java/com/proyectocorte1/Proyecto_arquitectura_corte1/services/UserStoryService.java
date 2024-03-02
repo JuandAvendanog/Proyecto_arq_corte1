@@ -1,5 +1,6 @@
 package com.proyectocorte1.Proyecto_arquitectura_corte1.services;
 
+import com.proyectocorte1.Proyecto_arquitectura_corte1.model.UserProject;
 import com.proyectocorte1.Proyecto_arquitectura_corte1.model.UserStory;
 import com.proyectocorte1.Proyecto_arquitectura_corte1.repositories.UserStoryRepository;
 import org.springframework.stereotype.Service;
@@ -30,4 +31,5 @@ public class UserStoryService {
     public String deleteUserStory(int id_user, int id_userStory) {
         return repository.deleteUserStory(id_user, id_userStory);
     }
+
 }

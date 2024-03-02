@@ -21,7 +21,7 @@ public class TaskController {
     }
 
     @PostMapping("/usuario/{id_user}/proyecto/{id_project}/historias/{id_userStory}/tareas")
-    public String createTask(@PathVariable("id_user") int id_user, Task newTask){
+    public String createTask(@PathVariable("id_user") int id_user,@RequestBody Task newTask){
         return taskService.createTask(id_user, newTask);
     }
 
